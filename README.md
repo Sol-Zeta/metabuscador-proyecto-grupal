@@ -25,13 +25,14 @@ Tendrá los siguientes enlaces:
 ### Vista inicial (home)
 <br>
 
-`/` : Vista de inicio de la app. Tendrá como mínimo un input de texto y un botón para efectuar la búsqueda. Una vez realizada, se mostrará debajo una lista de "tarjetas" que contengan los datos más relevantes de cada resultado y un botón para guardar cada una de ellas en favoritos.  
+`/` : Vista de inicio de la app. Tendrá como mínimo un input de texto y un botón para efectuar la búsqueda. Una vez realizada la misma, se mostrará debajo una lista de "tarjetas" que contengan los datos más relevantes de cada resultado y un botón para guardar cada una de ellas en `favoritos`.  
 Cada vez que se realice una nueva búsqueda, los resultados anteriores dejarán de mostrarse. 
 
 #### !!!! Sobre las tarjetas de resultados:
  Información sugerida: 
  - Título
  - Imagen representativa (!!!! en mi experiencia personal, es un dolor de estómago almacenar imágenes en Mongo y en el caso de SQL, en su momento yo no lo pude hacer y luego no lo volví a intentar, si tenemos claros los pasos a seguir para alcanzar dicho objetivo, lo pondría, sino, evaluaría las probabilidades de éxito de este punto, aunque creo que es muy útil saber hacerlo)
+ - Descripción del puesto, trabajo o curso.
  - Fecha de publicación (si corresponde)
  - Empresa, cliente o proveedor del curso
  - Duración en horas (para los cursos)
@@ -42,7 +43,7 @@ Cada vez que se realice una nueva búsqueda, los resultados anteriores dejarán 
 - Opción 1: 
 Si el usuario está logueado, se almacenarán sus selecciones en base de datos. En caso de que el usuario no esté logueado, la app deberá redirigir a /ingresar
 - Opción 2: el botón para guardar en favoritos se muestra solo en el caso de que el usuario esté logueado. Si no lo está, el botón no se muestra. 
-- Opción 3 (la más sencilla, pero también la menos parecida a un caso real): La vista inicial debe ofrecer la posibilidad de registrarse o loguearse. En este caso, el input de búsqueda y los resultados de la misma forman parte de una nueva vista privada a la que solo se puede acceder estando logueado. 
+- Opción 3 (la más sencilla, pero también la menos parecida a un caso real y por lo tanto, la que menos me gusta): La vista inicial debe ofrecer la posibilidad de registrarse o loguearse. En este caso, el input de búsqueda y los resultados de la misma forman parte de una nueva vista privada a la que solo se puede acceder estando logueado. 
 <br>
 <br>
 
@@ -57,6 +58,7 @@ Si el usuario está logueado, se almacenarán sus selecciones en base de datos. 
 <br>
 
 <strong>`/ingresar`</strong> : Validación de credenciales, abrir sesión y redirección **home**.
+(!!!! acá podríamos agregar la opción de recuperar contraseña ;-) con Nodemailer + JWT si les parece importante)
 <br>
 <br>
 
@@ -78,12 +80,13 @@ Si el usuario está logueado, se almacenarán sus selecciones en base de datos. 
 
 #### Notas adicionales
 <br>
+
 Sobre el control de acceso
 La aplicación debe estar protegida a entradas indebidas de usuarios no registrados (o autorizados por un proveedor externo), de manera que el endpoint asociado a la zona privada (`/favoritos`) comprobará si la sesión está abierta, y en caso contrario redireccionará al área `login` de la app.
 <br>
 <br>
 
-Para el `login` con credenciales email y contraseña, deberá hacerse mediante JWT (el cifrado es opcional). Para la parte de login con uno o más proveedores de terceros deberá hacerse mediante OAuth (con o sin Firebase, a elegir; en cualquier caso, con un proveedor OAuth será suficiente).
+Para el `login` con credenciales email y contraseña, deberá hacerse mediante JWT. Para la parte de login con uno o más proveedores de terceros deberá hacerse mediante `OAuth` (con o sin Firebase, a elegir; en cualquier caso, con un proveedor OAuth será suficiente).
 
 <br>
 <br>
@@ -95,10 +98,7 @@ El almacenamiento y la búsqueda de los datos, se realizará de la siguiente man
 
 !!!! Toda la información relativa a los `usuarios` de la plataforma (credenciales y otras cuestiones de acceso, así como la asociación de favoritos a usuarios) se almacenará en una base de datos relacional SQL.
 
-!!!! Los datos de las búsquedas provendrán del scrapping de al menos dos webs distintas que deberán seleccionarse previo análisis de las posibilidades de hacer scrapping y la relevancia de los datos que se puedan obtener. 
-
-
-El objetivo será en todo momento que no se replique información, dando prioridad a OMDB si ya dispone de los datos de una película, y si no es así, complementarla con una base de datos local.
+!!!! Los datos de las búsquedas provendrán del scrapping de al menos dos webs distintas que deberán seleccionarse previo análisis.
 
 <br>
 <br>
