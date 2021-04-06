@@ -93,7 +93,7 @@ Se valorará positivamente que además sea `PWA` (progressive web app), si bien 
 <br>
 <br>
 
-#### Sobre los recursos de terceros
+### Sobre los recursos de terceros
 
 Se permite (y recomienda, si con ello se minimiza el tiempo de desarrollo y se acelera así el de entrega) el `uso de cualquier recurso de terceros` (librerías, paquetes npm, etc.) además del código propio.
 <br>
