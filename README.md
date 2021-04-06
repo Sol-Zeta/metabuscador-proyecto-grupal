@@ -16,7 +16,7 @@ Tendrá los siguientes enlaces:
 - Inicio : `/`
 - Registrarse : `/registro`
 - Ingresar : `/ingresar`
-- Salir : `/salir`
+- Salir : `/salir` (redirige a `/`)
 - Favoritos : `/favoritos`
 
 <br>
@@ -28,22 +28,9 @@ Tendrá los siguientes enlaces:
 `/` : Vista de inicio de la app. Tendrá como mínimo un input de texto y un botón para efectuar la búsqueda. Una vez realizada la misma, se mostrará debajo una lista de "tarjetas" que contengan los datos más relevantes de cada resultado y un botón para guardar cada una de ellas en `favoritos`.  
 Cada vez que se realice una nueva búsqueda, los resultados anteriores dejarán de mostrarse. 
 
-#### !!!! Sobre las tarjetas de resultados:
- Información sugerida: 
- - Título
- - Imagen representativa (!!!! en mi experiencia personal, es un dolor de estómago almacenar imágenes en Mongo y en el caso de SQL, en su momento yo no lo pude hacer y luego no lo volví a intentar, si tenemos claros los pasos a seguir para alcanzar dicho objetivo, lo pondría, sino, evaluaría las probabilidades de éxito de este punto, aunque creo que es muy útil saber hacerlo)
- - Descripción del puesto, trabajo o curso.
- - Fecha de publicación (si corresponde)
- - Empresa, cliente o proveedor del curso
- - Duración en horas (para los cursos)
- - Requisitos u otra información relevante para cualquiera de las 3 apps. 
- - Botón para añadir a favoritos (!!!! ver siguiente comentario)
 
-#### !!!! Sobre guardar en favoritos:
-- Opción 1: 
-Si el usuario está logueado, se almacenarán sus selecciones en base de datos. En caso de que el usuario no esté logueado, la app deberá redirigir a /ingresar
-- Opción 2: el botón para guardar en favoritos se muestra solo en el caso de que el usuario esté logueado. Si no lo está, el botón no se muestra. 
-- Opción 3 (la más sencilla, pero también la menos parecida a un caso real y por lo tanto, la que menos me gusta): La vista inicial debe ofrecer la posibilidad de registrarse o loguearse. En este caso, el input de búsqueda y los resultados de la misma forman parte de una nueva vista privada a la que solo se puede acceder estando logueado. 
+#### Sobre guardar en favoritos:
+El botón para guardar en favoritos se muestra solo en el caso de que el usuario esté logueado. Si no lo está, el botón no se muestra. 
 <br>
 <br>
 
@@ -62,14 +49,6 @@ Si el usuario está logueado, se almacenarán sus selecciones en base de datos. 
 <br>
 <br>
 
-### Vista salir
-<br>
-
-<strong>`/salir`</strong> : Cierre de sesión y redirección a **home**.
-
-<br>
-<br>
-
 ### Vista favoritos
 <br>
 
@@ -78,7 +57,7 @@ Si el usuario está logueado, se almacenarán sus selecciones en base de datos. 
 <br>
 <br>
 
-#### Notas adicionales
+### Notas adicionales
 <br>
 
 Sobre el control de acceso
@@ -91,14 +70,16 @@ Para el `login` con credenciales email y contraseña, deberá hacerse mediante J
 <br>
 <br>
 
-#### Sobre el modelo de datos
+### Sobre el modelo de datos
 <br>
 
 El almacenamiento y la búsqueda de los datos, se realizará de la siguiente manera:
 
-!!!! Toda la información relativa a los `usuarios` de la plataforma (credenciales y otras cuestiones de acceso, así como la asociación de favoritos a usuarios) se almacenará en una base de datos relacional SQL.
+Toda la información relativa a los `usuarios` de la plataforma (credenciales y otras cuestiones de acceso, así como la asociación de favoritos a usuarios) se almacenará en una base de datos relacional SQL.
 
-!!!! Los datos de las búsquedas provendrán del scrapping de al menos dos webs distintas que deberán seleccionarse previo análisis.
+Los datos de las búsquedas provendrán del scrapping de al menos dos webs distintas que deberán seleccionarse previo análisis.
+
+El modelo de datos dependerá de la información que pueda recogerse de las plataformas elegidas. 
 
 <br>
 <br>
@@ -106,7 +87,7 @@ El almacenamiento y la búsqueda de los datos, se realizará de la siguiente man
 ### Sobre la UX/UI
 <br>
 
-La aplicación debe ser `mobile-first` y (!!!!) `SPA` (single page application), de manera que no haya en ningún momento recarga de página, y solo se carguen y rendericen aquellos contenidos mínimos necesarios con cada cambio de endpoint.
+La aplicación debe ser `mobile-first`.
 
 Se valorará positivamente que además sea `PWA` (progressive web app), si bien esto último es totalmente opcional.
 <br>
@@ -118,9 +99,10 @@ Se permite (y recomienda, si con ello se minimiza el tiempo de desarrollo y se a
 <br>
 <br>
 
-!!!! Sobre la metodología
+### Sobre la metodología
 
-Durante el desarrollo del proyecto completo, se seguirá una metodología ágil tipo SCRUM, aplicando además TDD (!!!!!!) desde el comienzo hasta el final.
+Durante el desarrollo del proyecto completo, se seguirá una metodología ágil tipo SCRUM.
 
-Esto implicará el establecimiento de un backlog de tareas, un sprint con sus story points y reparto de tareas, así como la creación de tests unitarios (!!!!!) desde el principio y, a ser posible, la realización de tests e2e al final.(!!!!!!)
+Esto implicará el establecimiento de un backlog de tareas, un sprint con sus story points y reparto de tareas.
 
+_Opcionalmente, se valorará positivamente aplicar TDD (e2e y pruebas unitarias)._
